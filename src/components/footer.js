@@ -1,10 +1,11 @@
-export {}
 
-export default function Footer() {
+
+export function Footer({itemsLeft}) {
+    
     return (
-        <footer class="footer">
-            <span class="todo-count"><strong>0</strong> items left</span>
-            <button class="clear-completed">Clear completed
+        <footer className="footer">
+            <span className="todo-count"><strong>{itemsLeft}</strong> items left</span>
+            <button className="clear-completed">Clear completed
             </button>
         </footer>
     )

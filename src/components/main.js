@@ -1,21 +1,23 @@
-export {}
+import { useState } from "react";
+import { TodosList } from "./todolist";
 
-export default function Main() {
-    return (
-        <section class="main">
-        <input class="toggle-all"
-              type="checkbox" />
-        <ul class="todo-list">
-            <li>
-                <div class="view">
-                    <input class="toggle"
-                          type="checkbox" />
-                    <label>Todo Title</label>
-                    <button class="destroy" />
-                </div>
-                <input class="edit" />
-            </li>
-        </ul>
-    </section>
-    )
+export function Main({ tasks, onDeleteTodo ,onToggleAll }) {
+    const [ checked, setChecked ] = useState([])
+    function handleToggleAll(event) {
+    onToggleAll(event.target.checked);
+    for (const todo of tasks) {
+      setChecked(event.target.checked)
+    }
+  }
+
+  return (
+      <section className="main">
+        <input className="toggle-all"
+               onChange={handleToggleAll}
+               type="checkbox"/>
+        <TodosList 
+            onDeleteTodo={onDeleteTodo} 
+            items={tasks}/>
+      </section>
+  );
 }
