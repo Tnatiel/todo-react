@@ -1,7 +1,6 @@
 
-export function TodosList({ items, onDeleteTodo }) {
+export function TodosList({ items, onDeleteTodo, isChecked }) {
     
-
     function handleRemove(id) {
         onDeleteTodo(id);
     }
@@ -13,10 +12,12 @@ export function TodosList({ items, onDeleteTodo }) {
             items.map( item => (
               <li key={item.id} className=''>
                 <div className="view">
-                  <input 
+                  <input
+                    name="checkbox" 
                     className="toggle"
                     type="checkbox"
-                    defaultChecked={false}
+                    checked={isChecked}
+                    onChange={() => {return}}
                     />
                   <label>{item.title}</label>
                   <button onClick={() => handleRemove(item.id)} className="destroy"/>

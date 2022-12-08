@@ -12,14 +12,8 @@ function App() {
   const [ todos, setTodos ] = useState([]);
   const [ noneCompletedTodos, setNoneCompletedTodos] = useState(0);
   
-  // Events
-
-  // const addTodoNitV = (title) => {
-  //   todos = todos.concat([{ id: Date.now(), title, completed: false}]);
-  //   // with spread operator
-  //   todos = [ ...todos, {id: Date.now(), title, completed: false}];
-  // }
   
+  // Events
   
   useEffect(() => {
     const unCompleted = todos.filter( todo => !todo.completed )
@@ -35,21 +29,16 @@ function App() {
   const removeTodo = (id) => {
     const completedTodos = todos.filter( currentTodo => currentTodo.id !== id);
     setTodos(completedTodos);
-    // console.log(completedTodos);
+  
   }
 
   const clearAllCompleted = () => {
-    const completedTodos = todos.filter( currentTodo => currentTodo !== !!currentTodo.completed)
+    const completedTodos =  todos.filter( currentTodo => currentTodo.completed === true);
     setTodos(completedTodos);
   }
 
   const toggleAllItems = (checkedValue) => {
     const allTodos = todos.map( todo => ({...todo, completed: checkedValue}));
-    
-    console.log(allTodos)
-
-
-    // todos = todos.map( todo => ({...todo, completed: checkedValue}))//
     setTodos(allTodos);
   }
 
@@ -81,7 +70,6 @@ function App() {
     <Footer 
       onClearCompleted={clearAllCompleted} 
       itemsLeft={noneCompletedTodos} 
-
       />
  
     </section>

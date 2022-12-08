@@ -1,9 +1,11 @@
 
-export function Header({mainTitle, onAddItem}) {
 
+export function Header({mainTitle, onAddItem}) {
+   
     function handleTaskInput(event) {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && event.target.value.length > 0) {
             onAddItem(event.target.value)
+            event.target.value = '';
         }
     }
     
