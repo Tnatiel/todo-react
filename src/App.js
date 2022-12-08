@@ -24,6 +24,7 @@ function App() {
   const addTodo = (title) => {
     const newTodos = todos.concat([{ id: Date.now(), title, completed: false}]);
     setTodos(newTodos)
+    console.log(newTodos)
   }
 
   const removeTodo = (id) => {
@@ -33,7 +34,7 @@ function App() {
   }
 
   const clearAllCompleted = () => {
-    const completedTodos =  todos.filter( currentTodo => currentTodo.completed === true);
+    const completedTodos =  todos.filter( currentTodo => !currentTodo.completed);
     setTodos(completedTodos);
   }
 

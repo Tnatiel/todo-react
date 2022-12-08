@@ -1,12 +1,17 @@
 import { TodosList } from "./todolist";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function Main({ tasks, onDeleteTodo ,onToggleAll }) {
+export function Main({ tasks, onDeleteTodo ,onToggleAll }, ) {
+
+
     const [ checked, setChecked ] = useState(Boolean)
-    // useEffect(handleToggleAll)
+
     function handleToggleAll(event) {
-        setChecked(event.target.checked)
-        onToggleAll(event.target.checked);
+        setChecked(!checked)
+        onToggleAll(!checked);
+        console.log(`evt: ${event.target.checked}`);
+        console.log(`state: ${!checked}`);
+        console.log(tasks)
     }
     
     return (
