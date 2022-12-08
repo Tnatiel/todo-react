@@ -1,7 +1,7 @@
 
 import './App.css';
 import {Header} from './components/header';
-import {Main} from './components/main';
+import {ToggleAll} from './components/main';
 import {Footer} from './components/footer';
 import { useEffect, useState } from 'react';
 
@@ -22,9 +22,8 @@ function App() {
 
 
   const addTodo = (title) => {
-    const newTodos = todos.concat([{ id: Date.now(), title, completed: false}]);
+    const newTodos = todos.concat([{ id: Date.now(), title, completed: false, edit: false}]);
     setTodos(newTodos)
-    console.log(newTodos)
   }
 
   const removeTodo = (id) => {
@@ -43,14 +42,6 @@ function App() {
     setTodos(allTodos);
   }
 
-
-  // todo: where should we implement it?
-  const markAsCompleted = () => {} // main
-
-
-  // todo: pass title, placeholder to header
-  // todo: pass item left to footer
-  
   // todo: BONUS THINK ABOUT EDIT IN PLACE (DOUBLE CLICK TO VHANGE ITEM)
 
   return (
@@ -60,9 +51,10 @@ function App() {
     <Header 
       mainTitle={appTitle} 
       onAddItem={addTodo} 
+      
       />
 
-    <Main 
+    <ToggleAll 
       tasks={todos}  
       onDeleteTodo={removeTodo} 
       onToggleAll={toggleAllItems}
