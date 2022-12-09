@@ -47,12 +47,8 @@ function App() {
   }
 
   const inputEditMode = (item) => {
-    todos.map( todo => todo.edit = false);
-    item.edit = true;
-    console.log(todos)
-    setTodos(todos)
-    // const editUpdatedList = todos.filter( todo => !todo.edit)
-    // console.log(editUpdatedList)
+    const updatedList = todos.map( todo => todo.id === item.id ? {...todo, edit: true} : {...todo, edit: false});
+    setTodos(updatedList)
   }
 
   // todo: BONUS THINK ABOUT EDIT IN PLACE (DOUBLE CLICK TO VHANGE ITEM)
