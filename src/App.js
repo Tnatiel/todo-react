@@ -1,7 +1,7 @@
 
 import './App.css';
 import {Header} from './components/header';
-import {ToggleAll} from './components/main';
+import {ToggleAll} from './components/toggle-all';
 import {Footer} from './components/footer';
 import { useEffect, useState } from 'react';
 
@@ -42,8 +42,13 @@ function App() {
   }
 
   const inputEditMode = (item) => {
-    const updatedList = todos.map( todo => todo.id === item.id ? {...todo, edit: true, completed: false} : {...todo, edit: false});
-    console.log(updatedList)
+    const updatedList = todos.map( todo => todo.id === item.id ? {...todo, edit: true} : {...todo, edit: false});
+    setTodos(updatedList)
+  }
+
+  const markAsCompleted = (item) => {
+    const currentCompletedState = item.completed
+    const updatedList = todos.map( todo => todo.id === item.id ? {...todo, completed: !currentCompletedState} : {...todo});
     setTodos(updatedList)
   }
 
@@ -64,6 +69,7 @@ function App() {
       onDeleteTodo={removeTodo} 
       onToggleAll={toggleAllItems}
       onDoubleClick={inputEditMode}
+      onMarkCompleted={markAsCompleted}
       />
 
     <Footer 

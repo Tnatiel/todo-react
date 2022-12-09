@@ -1,17 +1,14 @@
 import { TodosList } from "./todolist";
 import { useState } from "react";
 
-export function ToggleAll({ tasks, onDeleteTodo ,onToggleAll, onDoubleClick }, ) {
+export function ToggleAll({ tasks, onDeleteTodo ,onToggleAll, onDoubleClick, onMarkCompleted }, ) {
 
 
     const [ checked, setChecked ] = useState(Boolean)
 
-    function handleToggleAll(event) {
+    function handleToggleAll() {
         setChecked(!checked)
         onToggleAll(!checked);
-        // console.log(`evt: ${event.target.checked}`);
-        // console.log(`state: ${!checked}`);
-        // console.log(tasks)
     }
     
     return (
@@ -26,6 +23,7 @@ export function ToggleAll({ tasks, onDeleteTodo ,onToggleAll, onDoubleClick }, )
                 items={tasks}
                 isChecked={checked}
                 onDoubleClick={onDoubleClick}
+                onMarkCompleted={onMarkCompleted}
                 
                 />
         </section>

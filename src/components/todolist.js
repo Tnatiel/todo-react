@@ -1,5 +1,5 @@
 
-export function TodosList({ items, onDeleteTodo, isChecked, onDoubleClick }) {
+export function TodosList({ items, onDeleteTodo, isChecked, onDoubleClick, onMarkCompleted }) {
   
 
     function handleRemove(id) {
@@ -10,16 +10,14 @@ export function TodosList({ items, onDeleteTodo, isChecked, onDoubleClick }) {
         <ul className="todo-list">
           {
             items.map( item => (
-              <li 
-                key={item.id} 
-                className={ item.edit === true ? 'editing': ''}>
+              <li key={item.id} className={`${item.edit === true ? 'editing': ''} ${item.completed === true ? 'completed': ''}`}>
                 <div className="view">
                   <input
                     name="checkbox" 
                     className="toggle"
                     type="checkbox"
-                    checked={isChecked}
-                    onChange={() => {return}}
+                    defaultValue={isChecked}
+                    onChange={() => onMarkCompleted(item)}
                     />
                   <label onDoubleClick={() => onDoubleClick(item)} >{item.title}</label>
                   <button onClick={() => handleRemove(item.id)} className="destroy"/>
