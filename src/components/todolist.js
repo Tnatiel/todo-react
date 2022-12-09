@@ -10,7 +10,9 @@ export function TodosList({ items, onDeleteTodo, isChecked, onDoubleClick }) {
         <ul className="todo-list">
           {
             items.map( item => (
-              <li key={item.id} className={ item.edit === true ? 'editing': ''}>
+              <li 
+                key={item.id} 
+                className={ item.edit === true ? 'editing': ''}>
                 <div className="view">
                   <input
                     name="checkbox" 

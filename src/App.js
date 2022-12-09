@@ -20,11 +20,6 @@ function App() {
     setNoneCompletedTodos(unCompleted.length)
   }, [todos])
 
-  useEffect(() => {
-    
-    setTodos(todos)
-  }, [todos])
-
 
   const addTodo = (title) => {
     const newTodos = todos.concat([{ id: Date.now(), title, completed: false, edit: false}]);
@@ -47,7 +42,8 @@ function App() {
   }
 
   const inputEditMode = (item) => {
-    const updatedList = todos.map( todo => todo.id === item.id ? {...todo, edit: true} : {...todo, edit: false});
+    const updatedList = todos.map( todo => todo.id === item.id ? {...todo, edit: true, completed: false} : {...todo, edit: false});
+    console.log(updatedList)
     setTodos(updatedList)
   }
 
