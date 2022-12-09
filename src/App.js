@@ -1,9 +1,9 @@
-
+import React from 'react';
 import './App.css';
 import {Header} from './components/header';
 import {ToggleAll} from './components/toggle-all';
 import {Footer} from './components/footer';
-import { useEffect, useState, React } from 'react';
+import { useEffect, useState } from 'react';
 import { TodosList } from './components/todolist';
 
 
