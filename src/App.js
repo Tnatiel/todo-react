@@ -3,7 +3,7 @@ import './App.css';
 import {Header} from './components/header';
 import {ToggleAll} from './components/toggle-all';
 import {Footer} from './components/footer';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, React } from 'react';
 import { TodosList } from './components/todolist';
 
 
@@ -74,7 +74,7 @@ function App() {
       onExitEdit={exitEdit}
       
       />
-    {/* destrbution = const [tasks, removeTodo, inputEditMode, markAsCompleted, editTodo] = children */}
+    
     <ToggleAll onToggleAll={toggleAllItems} >
       <TodosList>
         {todos}
@@ -83,7 +83,6 @@ function App() {
         {markAsCompleted}
         {editTodo}
       </TodosList>
-
     </ToggleAll>
       
 
@@ -91,7 +90,7 @@ function App() {
       onClearCompleted={clearAllCompleted} 
       itemsLeft={noneCompletedTodos} 
       />
- 
+
     </section>
   );
 }
