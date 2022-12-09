@@ -74,7 +74,7 @@ function App() {
       onExitEdit={exitEdit}
       
       />
-
+    {/* destrbution = const [tasks, removeTodo, inputEditMode, markAsCompleted, editTodo] = children */}
     <ToggleAll onToggleAll={toggleAllItems} >
       <TodosList>
         {todos}
