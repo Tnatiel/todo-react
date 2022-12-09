@@ -1,22 +1,11 @@
-import { useState } from "react";
-export function TodosList({ items, onDeleteTodo, isChecked }) {
-    
-  const [edit, setEdit] = useState(Boolean)
+
+export function TodosList({ items, onDeleteTodo, isChecked, onDoubleClick }) {
   
 
     function handleRemove(id) {
         onDeleteTodo(id);
     }
     
-    
-    function handleDoubleClick(event) {
-      setEdit(!edit)
-      const editedTodo = items.filter( item => item.edit === true)
-      console.log(editedTodo)
-      console.log(event.target.parentElement.parentElement)
-      event.target.parentElement.parentElement.className = "editing"
-    }
-
     return (
         <ul className="todo-list">
           {
@@ -30,7 +19,7 @@ export function TodosList({ items, onDeleteTodo, isChecked }) {
                     checked={isChecked}
                     onChange={() => {return}}
                     />
-                  <label onDoubleClick={handleDoubleClick} >{item.title}</label>
+                  <label onDoubleClick={() => onDoubleClick(item)} >{item.title}</label>
                   <button onClick={() => handleRemove(item.id)} className="destroy"/>
                 </div>
                 <input className="edit"/>

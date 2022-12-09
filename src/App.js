@@ -20,6 +20,11 @@ function App() {
     setNoneCompletedTodos(unCompleted.length)
   }, [todos])
 
+  useEffect(() => {
+    
+    setTodos(todos)
+  }, [todos])
+
 
   const addTodo = (title) => {
     const newTodos = todos.concat([{ id: Date.now(), title, completed: false, edit: false}]);
@@ -29,7 +34,6 @@ function App() {
   const removeTodo = (id) => {
     const completedTodos = todos.filter( currentTodo => currentTodo.id !== id);
     setTodos(completedTodos);
-  
   }
 
   const clearAllCompleted = () => {
@@ -40,6 +44,15 @@ function App() {
   const toggleAllItems = (checkedValue) => {
     const allTodos = todos.map( todo => ({...todo, completed: checkedValue}));
     setTodos(allTodos);
+  }
+
+  const inputEditMode = (item) => {
+    todos.map( todo => todo.edit = false);
+    item.edit = true;
+    console.log(todos)
+    setTodos(todos)
+    // const editUpdatedList = todos.filter( todo => !todo.edit)
+    // console.log(editUpdatedList)
   }
 
   // todo: BONUS THINK ABOUT EDIT IN PLACE (DOUBLE CLICK TO VHANGE ITEM)
@@ -58,6 +71,7 @@ function App() {
       tasks={todos}  
       onDeleteTodo={removeTodo} 
       onToggleAll={toggleAllItems}
+      onDoubleClick={inputEditMode}
       />
 
     <Footer 

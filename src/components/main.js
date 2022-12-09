@@ -1,7 +1,7 @@
 import { TodosList } from "./todolist";
 import { useState } from "react";
 
-export function ToggleAll({ tasks, onDeleteTodo ,onToggleAll }, ) {
+export function ToggleAll({ tasks, onDeleteTodo ,onToggleAll, onDoubleClick }, ) {
 
 
     const [ checked, setChecked ] = useState(Boolean)
@@ -25,6 +25,7 @@ export function ToggleAll({ tasks, onDeleteTodo ,onToggleAll }, ) {
                 onDeleteTodo={onDeleteTodo} 
                 items={tasks}
                 isChecked={checked}
+                onDoubleClick={onDoubleClick}
                 
                 />
         </section>
