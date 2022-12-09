@@ -76,14 +76,14 @@ function App() {
       />
 
     <ToggleAll onToggleAll={toggleAllItems} >
-      <TodosList
-        tasks={todos}
-        onDeleteTodo={removeTodo}
-        onDoubleClick={inputEditMode}
-        onMarkCompleted={markAsCompleted}
-        onAddItem={addTodo} 
-        onEdit={editTodo}
-        />
+      <TodosList>
+        {todos}
+        {removeTodo}
+        {inputEditMode}
+        {markAsCompleted}
+        {editTodo}
+      </TodosList>
+
     </ToggleAll>
       
 
