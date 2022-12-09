@@ -1,5 +1,5 @@
 // import {useState} from 'react'
-export function TodosList({ todos, onDeleteTodo, onDoubleClick, onMarkCompleted, onEditInput }) {
+export function TodosList({tasks, onDeleteTodo, onDoubleClick, onMarkCompleted, onEditInput }) {
 
   // const [focus, setFocus] = useState(false)
 
@@ -15,20 +15,20 @@ export function TodosList({ todos, onDeleteTodo, onDoubleClick, onMarkCompleted,
     return (
         <ul className="todo-list">
           {
-            todos.map( item => (
-              <li key={item.id} className={`${item.edit === true ? 'editing': ''} ${item.completed === true ? 'completed': ''}`}>
+            tasks.map( task => (
+              <li key={task.id} className={`${task.edit === true ? 'editing': ''} ${task.completed === true ? 'completed': ''}`}>
                 <div className="view">
                   <input
                     name="checkbox" 
                     className="toggle"
                     type="checkbox"
-                    checked={item.completed}
-                    onChange={() => onMarkCompleted(item)}
+                    checked={task.completed}
+                    onChange={() => onMarkCompleted(task)}
                     />
-                  <label onDoubleClick={() => onDoubleClick(item)} >{item.title}</label>
-                  <button onClick={() => onDeleteTodo(item.id)} className="destroy"/>
+                  <label onDoubleClick={() => onDoubleClick(task)} >{task.title}</label>
+                  <button onClick={() => onDeleteTodo(task.id)} className="destroy"/>
                 </div>
-                <input onKeyUp={(event) => handleEditTask(event, item)} className="edit"/>
+                <input onKeyUp={(event) => handleEditTask(event, task)} className="edit"/>
               </li>
           ))}
         </ul>

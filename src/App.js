@@ -4,6 +4,7 @@ import {Header} from './components/header';
 import {ToggleAll} from './components/toggle-all';
 import {Footer} from './components/footer';
 import { useEffect, useState } from 'react';
+import { TodosList } from './components/todolist';
 
 
 function App() {
@@ -67,22 +68,24 @@ function App() {
     
     <section className="todoapp">
 
-    <Header 
+    <Header
       mainTitle={appTitle} 
       onAddItem={addTodo} 
       onExitEdit={exitEdit}
       
       />
 
-    <ToggleAll 
-      tasks={todos}  
-      onDeleteTodo={removeTodo} 
-      onToggleAll={toggleAllItems}
-      onDoubleClick={inputEditMode}
-      onMarkCompleted={markAsCompleted}
-      onAddItem={addTodo} 
-      onEdit={editTodo}
-      />
+    <ToggleAll onToggleAll={toggleAllItems} >
+      <TodosList
+        tasks={todos}
+        onDeleteTodo={removeTodo}
+        onDoubleClick={inputEditMode}
+        onMarkCompleted={markAsCompleted}
+        onAddItem={addTodo} 
+        onEdit={editTodo}
+        />
+    </ToggleAll>
+      
 
     <Footer
       onClearCompleted={clearAllCompleted} 
