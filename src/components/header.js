@@ -1,6 +1,6 @@
 
 
-export function Header({mainTitle, onAddItem}) {
+export function Header({mainTitle, onAddItem, onExitEdit}) {
    
     function handleTaskInput(event) {
         if (event.key === 'Enter' && event.target.value.length > 0) {
@@ -12,7 +12,7 @@ export function Header({mainTitle, onAddItem}) {
     return (
         <header className="header">
             <h1>{mainTitle}</h1>
-            <input onKeyUp={handleTaskInput} className="new-todo"
+            <input onClick={onExitEdit} onKeyUp={handleTaskInput} className="new-todo"
                 placeholder="What needs to be done?"
                 autoFocus />
         </header>

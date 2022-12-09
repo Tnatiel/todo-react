@@ -20,10 +20,19 @@ function App() {
     setNoneCompletedTodos(unCompleted.length)
   }, [todos])
 
+  const exitEdit = () => {
+    const noEditTodos = todos.map(todo => ({...todo, edit: false}));
+    setTodos(noEditTodos)
+  }
 
   const addTodo = (title) => {
     const newTodos = todos.concat([{ id: Date.now(), title, completed: false, edit: false}]);
     setTodos(newTodos)
+  }
+
+  const editTodo = (id, title) => {
+    const updatedList = todos.map( todo => id === todo.id ? {...todo, title, edit: false}: {...todo})
+    setTodos(updatedList)
   }
 
   const removeTodo = (id) => {
@@ -61,6 +70,7 @@ function App() {
     <Header 
       mainTitle={appTitle} 
       onAddItem={addTodo} 
+      onExitEdit={exitEdit}
       
       />
 
@@ -70,9 +80,11 @@ function App() {
       onToggleAll={toggleAllItems}
       onDoubleClick={inputEditMode}
       onMarkCompleted={markAsCompleted}
+      onAddItem={addTodo} 
+      onEdit={editTodo}
       />
 
-    <Footer 
+    <Footer
       onClearCompleted={clearAllCompleted} 
       itemsLeft={noneCompletedTodos} 
       />
