@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 
 
@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 export function useTodos() {
     const [ todos, setTodos ] = useState([]);
     const [ noneCompletedTodos, setNoneCompletedTodos] = useState(0);
+    // const countRef = useRef(0)
     
     
     // Events

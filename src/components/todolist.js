@@ -3,7 +3,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { ListContext } from '../providers/list-context';
 
-export function TodosList({children}) {
+export function TodosList() {
 
   const todoApi = useContext(ListContext)
 
@@ -15,10 +15,10 @@ export function TodosList({children}) {
     }
   }
 
-  function handleDoubleClick(event, todo) {
-    todo.edit = true
-    todoApi.inputEditMode(todo)
-  }
+  // function handleDoubleClick(todo) {
+  //   todo.edit = true
+    
+  // }
     return (
         <ul className="todo-list">
           {
@@ -32,7 +32,7 @@ export function TodosList({children}) {
                     checked={todo.completed}
                     onChange={() => todoApi.markAsCompleted(todo)}
                     />
-                  <label onDoubleClick={(event) => handleDoubleClick(event, todo)} >{todo.title}</label>
+                  <label onDoubleClick={() => todoApi.inputEditMode(todo)} >{todo.title}</label>
                   <button onClick={() => todoApi.removeTodo(todo.id)} className="destroy"/>
                 </div>
                 <input onKeyUp={(event) => handleEditTask(event, todo)} className="edit" autoFocus />
