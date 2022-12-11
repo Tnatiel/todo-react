@@ -10,8 +10,12 @@ export function TodosList({children}) {
       const newTitle = event.target.value
       editTodo(item.id, newTitle) 
       event.target.value = ''
-      
     }
+  }
+
+  function handleDoubleClick(event, task) {
+    console.log(event.target)
+    inputEditMode(task)
   }
     return (
         <ul className="todo-list">
@@ -26,7 +30,7 @@ export function TodosList({children}) {
                     checked={task.completed}
                     onChange={() => markAsCompleted(task)}
                     />
-                  <label onDoubleClick={() => inputEditMode(task)} >{task.title}</label>
+                  <label onDoubleClick={(event) => handleDoubleClick(event, task)} >{task.title}</label>
                   <button onClick={() => removeTodo(task.id)} className="destroy"/>
                 </div>
                 <input onKeyUp={(event) => handleEditTask(event, task)} className="edit"/>
