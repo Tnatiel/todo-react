@@ -5,42 +5,30 @@ import {ToggleAll} from './components/toggle-all';
 import {Footer} from './components/footer';
 import { TodosList } from './components/todolist';
 import { useTodos } from './hooks/useTodos';
+import { ListContext } from './providers/list-context';
 
 
 function App() {
   
   const appTitle = 'Todos App';
-  const {noneCompletedTodos, exitEdit, editTodo, removeTodo, todos, addTodo, clearAllCompleted, markAsCompleted, inputEditMode, toggleAllItems} = useTodos()
-  
-  // todo: BONUS THINK ABOUT EDIT IN PLACE (DOUBLE CLICK TO VHANGE ITEM)
+  const todoApi = useTodos()
+
   return (
-    
-    <section className="todoapp">
+    <ListContext.Provider value={todoApi}>
+      <section className="todoapp">
 
-    <Header
-      mainTitle={appTitle} 
-      onAddItem={addTodo} 
-      onExitEdit={exitEdit}
+      <Header
+        mainTitle={appTitle}         
+        />
       
-      />
-    
-    <ToggleAll onToggleAll={toggleAllItems} >
-      <TodosList>
-        {todos}
-        {removeTodo}
-        {inputEditMode}
-        {markAsCompleted}
-        {editTodo}
-      </TodosList>
-    </ToggleAll>
+      <ToggleAll />
+      <TodosList />
+        
       
-    
-    <Footer
-      onClearCompleted={clearAllCompleted} 
-      itemsLeft={noneCompletedTodos} 
-      />
+      <Footer/>
 
-    </section>
+      </section>
+    </ListContext.Provider>
   );
 }
 export default App;

@@ -1,4 +1,4 @@
 
 import { createContext } from "react";
 
-const ListContext = createContext(null)
+export const ListContext = createContext(null)

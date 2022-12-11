@@ -70,7 +70,6 @@ export function useTodos() {
         inputEditMode,
         clearAllCompleted,
         addTodo,
-        toggleAllItems
     }
 
 }
