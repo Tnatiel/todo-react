@@ -3,7 +3,7 @@ import React from 'react';
 
 export function TodosList({children}) {
 
-  let [tasks, removeTodo, inputEditMode, markAsCompleted, editTodo] = children
+  const [todos, removeTodo, inputEditMode, markAsCompleted, editTodo] = children
 
   function handleEditTask(event, item) {
     if (event.key === 'Enter' && event.target.value.length > 0) {
@@ -13,27 +13,27 @@ export function TodosList({children}) {
     }
   }
 
-  function handleDoubleClick(event, task) {
-    console.log(event.target)
-    inputEditMode(task)
+  function handleDoubleClick(event, todo) {
+    todo.edit = true
+    inputEditMode(todo)
   }
     return (
         <ul className="todo-list">
           {
-            tasks.map( task => (
-              <li key={task.id} className={`${task.edit === true ? 'editing': ''} ${task.completed === true ? 'completed': ''}`}>
+            todos.map( todo => (
+              <li key={todo.id} className={`${todo.edit === true ? 'editing': ''} ${todo.completed === true ? 'completed': ''}`}>
                 <div className="view">
                   <input
                     name="checkbox" 
                     className="toggle"
                     type="checkbox"
-                    checked={task.completed}
-                    onChange={() => markAsCompleted(task)}
+                    checked={todo.completed}
+                    onChange={() => markAsCompleted(todo)}
                     />
-                  <label onDoubleClick={(event) => handleDoubleClick(event, task)} >{task.title}</label>
-                  <button onClick={() => removeTodo(task.id)} className="destroy"/>
+                  <label onDoubleClick={(event) => handleDoubleClick(event, todo)} >{todo.title}</label>
+                  <button onClick={() => removeTodo(todo.id)} className="destroy"/>
                 </div>
-                <input onKeyUp={(event) => handleEditTask(event, task)} className="edit"/>
+                <input onKeyUp={(event) => handleEditTask(event, todo)} className="edit" autoFocus />
               </li>
           ))}
         </ul>
