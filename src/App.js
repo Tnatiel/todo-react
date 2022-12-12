@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import './App.css';
 import { AppsList } from './components/apps-list';
 // import { ListAdder } from './components/list-adder';
 import { TodoApp } from './components/TodoApp';
 import { useState } from 'react';
+
 
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
   const listInputAdderRef = useRef()
   const userLoginInputRef = useRef()
   const passwordLoginInputRef = useRef()
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState([{}])
+   
+  
   
   const addList = () => {
     const appId = Math.random() * 9999999999999
@@ -20,16 +23,17 @@ function App() {
     const newLists = lists.concat(newListApp)
     setLists(newLists)
   }
-
+  
   const loginUser = () => {
     const userName = userLoginInputRef.current.value
-    userLoginInputRef.current.value = ''
-    setUser({userName, role: 'admin'})
-  }
+    userLoginInputRef.current.value = '' 
+    user[0] = {userName, role: 'admin'}
+    setUser(user[0])
+    }
 
   return (
     <>
-    {user.role ? (
+      {user.role === 'admin' ? (
       <>
         <input defaultValue='' ref={listInputAdderRef} type="text" placeholder='Whats the list name'/>
         <button onClick={addList}>ADD LIST</button>

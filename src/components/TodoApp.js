@@ -10,7 +10,7 @@ import { AuthContext } from '../providers/auth-context';
 export function TodoApp({mainTitle}) {
 
     const todoApi = useTodos()
-    const currentUser = {name: 'moty', role: 'noo'}
+    const currentUser = {name: 'moty', role: 'admin'}
 
   // console.log(mainTitle)
     return (
