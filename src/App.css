@@ -375,3 +375,10 @@ html .clear-completed:active {
         bottom: 10px;
     }
 }
+
+
+/* my addition */
+
+.todos-apps-list {
+    list-style: none;
+}

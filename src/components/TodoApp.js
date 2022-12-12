@@ -6,16 +6,16 @@ import { ListContext } from '../providers/list-context';
 import { useTodos } from '../hooks/useTodos';
 
 
-export function TodosApp({appTitle}) {
+export function TodoApp({mainTitle}) {
 
     const todoApi = useTodos()
 
-
+  // console.log(mainTitle)
     return (
     <ListContext.Provider value={todoApi}>
       <section className="todoapp">
       <Header
-        mainTitle={appTitle}         
+        mainTitle={mainTitle}         
         />
       <ToggleAll>
         <TodosList />

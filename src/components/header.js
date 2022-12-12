@@ -4,18 +4,15 @@ import { ListContext } from '../providers/list-context';
 
 
 export function Header({mainTitle}) {
-
     const {addTodo, exitEdit} = useContext(ListContext)
+    const todoiIputRef = useRef()
 
-    const inputRef = useRef()
 
     useEffect(() => {
-        inputRef.current.focus();
+        todoiIputRef.current.focus();
       }, [])
 
     function handleTaskInput(event) {
-        // console.log(event.key)
-        // console.log(event.target.value.length)
         if (event.key === 'Enter' && event.target.value.length > 0) {
             addTodo(event.target.value)
             event.target.value = '';
@@ -27,7 +24,7 @@ export function Header({mainTitle}) {
             <h1>{mainTitle}</h1>
             <input 
                 className="new-todo"
-                ref={inputRef}  
+                ref={todoiIputRef}  
                 onClick={exitEdit} 
                 onKeyUp={handleTaskInput} 
                 placeholder="What needs to be done?"

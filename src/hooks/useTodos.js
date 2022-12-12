@@ -8,9 +8,10 @@ import { useEffect, useRef, useState } from 'react';
 export function useTodos() {
     const [ todos, setTodos ] = useState([]);
     const [ noneCompletedTodos, setNoneCompletedTodos] = useState(0);
+    
     // const countRef = useRef(0)
     
-    
+     
     // Events
     
     useEffect(() => {
@@ -18,13 +19,15 @@ export function useTodos() {
         setNoneCompletedTodos(unCompleted.length)
     }, [todos])
 
+    
+
     const exitEdit = () => {
         const noEditTodos = todos.map(todo => ({...todo, edit: false}));
         setTodos(noEditTodos)
     }
 
-    const addTodo = (title) => {
-        const newTodos = todos.concat([{ id: Date.now(), title, completed: false, edit: false}]);
+    const addTodo = (todoTitle) => {
+        const newTodos = todos.concat([{ id: Date.now(), title: todoTitle, completed: false, edit: false}]);
         setTodos(newTodos)
     }
 

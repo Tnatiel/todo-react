@@ -15,10 +15,6 @@ export function TodosList() {
     }
   }
 
-  // function handleDoubleClick(todo) {
-  //   todo.edit = true
-    
-  // }
     return (
         <ul className="todo-list">
           {
