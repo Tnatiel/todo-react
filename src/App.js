@@ -32,22 +32,22 @@ function App() {
     }
 
   return (
-    <>
-      {user.role === 'admin' ? (
+    // <>
+    //   {user.role === 'admin' ? (
       <>
         <input defaultValue='' ref={listInputAdderRef} type="text" placeholder='Whats the list name'/>
         <button onClick={addList}>ADD LIST</button>
         <AppsList items={lists}/>
       </>
-    ) : (
-      <>
-        <input ref={userLoginInputRef} type="text" placeholder={'username'}/>
-        <input ref={passwordLoginInputRef} type="password" placeholder={'password'}/>
-        <button onClick={loginUser}>Sign in</button>
-      </>
+  //   ) : (
+  //     <>
+  //       <input ref={userLoginInputRef} type="text" placeholder={'username'}/>
+  //       <input ref={passwordLoginInputRef} type="password" placeholder={'password'}/>
+  //       <button onClick={loginUser}>Sign in</button>
+  //     </>
 
-    ) }
-  </>
+  //   ) }
+  // </>
   );
 }
 export default App;

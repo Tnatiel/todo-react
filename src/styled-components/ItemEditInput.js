@@ -5,8 +5,12 @@ export const ItemEditInput = styled.input`
     border-bottom: none;
     padding: 0;
     display: block;
-    width: 506px;
+    width: 500px;
     padding: 13px 17px 12px 17px;
     margin: 0 0 0 43px;
+
+    li.editing .view {
+        display: none;
+    }
 
 `

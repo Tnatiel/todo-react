@@ -33,6 +33,7 @@ export function useTodos() {
 
     const editTodo = (id, title) => {
         const updatedList = todos.map( todo => id === todo.id ? {...todo, title, edit: false}: {...todo})
+        console.log(updatedList)
         setTodos(updatedList)
         
     }

@@ -11,4 +11,12 @@ export const ListItemStyle = styled.li`
         border-bottom: none;
     }
 
+    :hover .destroy {
+        display: block;
+    }
+
+    li.editing:last-child {
+    margin-bottom: -1px;
+}
+
 `
