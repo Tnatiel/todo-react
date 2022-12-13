@@ -2,6 +2,8 @@
 import React from 'react';
 import { useContext } from 'react';
 import { ListContext } from '../providers/list-context';
+import { ListItemStyle } from '../styled-components/ListItemStyle' 
+import { ItemEditInput } from '../styled-components/ItemEditInput' 
 
 export function TodosList() {
 
@@ -19,7 +21,8 @@ export function TodosList() {
         <ul className="todo-list">
           {
             todoApi.todos.map( todo => (
-              <li key={todo.id} className={`${todo.edit === true ? 'editing': ''} ${todo.completed === true ? 'completed': ''}`}>
+              <ListItemStyle key={todo.id} className={`${todo.edit === true ? 'editing': ''} ${todo.completed === true ? 'completed': ''}`}>
+              
                 <div className="view">
                   <input
                     name="checkbox" 
@@ -31,8 +34,9 @@ export function TodosList() {
                   <label onDoubleClick={() => todoApi.inputEditMode(todo)} >{todo.title}</label>
                   <button onClick={() => todoApi.removeTodo(todo.id)} className="destroy"/>
                 </div>
-                <input onKeyUp={(event) => handleEditTask(event, todo)} className="edit" autoFocus />
-              </li>
+                <ItemEditInput onKeyUp={(event) => handleEditTask(event, todo)} className="edit" autoFocus />
+              </ListItemStyle>
+              
           ))}
         </ul>
     );

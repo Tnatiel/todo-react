@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import './App.css';
 import { AppsList } from './components/apps-list';
 // import { ListAdder } from './components/list-adder';
@@ -15,11 +15,10 @@ function App() {
   const passwordLoginInputRef = useRef()
   const [user, setUser] = useState([{}])
    
-  
-  
   const addList = () => {
     const appId = Math.random() * 9999999999999
     const newListApp =  <TodoApp mainTitle={listInputAdderRef.current.value} key={appId} />
+    listInputAdderRef.current.value = ''
     const newLists = lists.concat(newListApp)
     setLists(newLists)
   }
@@ -27,6 +26,7 @@ function App() {
   const loginUser = () => {
     const userName = userLoginInputRef.current.value
     userLoginInputRef.current.value = '' 
+    passwordLoginInputRef.current.value = '' 
     user[0] = {userName, role: 'admin'}
     setUser(user[0])
     }
@@ -43,7 +43,7 @@ function App() {
       <>
         <input ref={userLoginInputRef} type="text" placeholder={'username'}/>
         <input ref={passwordLoginInputRef} type="password" placeholder={'password'}/>
-        <button onClick={loginUser}>sign in</button>
+        <button onClick={loginUser}>Sign in</button>
       </>
 
     ) }
