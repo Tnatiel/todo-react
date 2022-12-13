@@ -9,8 +9,5 @@ export const ItemEditInput = styled.input`
     padding: 13px 17px 12px 17px;
     margin: 0 0 0 43px;
 
-    li.editing .view {
-        display: none;
-    }
 
 `

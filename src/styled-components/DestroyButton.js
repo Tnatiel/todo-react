@@ -4,7 +4,7 @@ export const DestroyButton = styled.button`
     display: none;
     position: absolute;
     top: 0;
-    right: 10px;
+    right: -20px;
     bottom: 0;
     width: 40px;
     height: 40px;
@@ -16,8 +16,11 @@ export const DestroyButton = styled.button`
 
     :hover {
         color: #af5b5e;
-    }
+        ${'' /* right: -30px; */}
+        ${'' /* right: 100px; */}
 
+    }
+    
     :after {
         content: '×';
     }

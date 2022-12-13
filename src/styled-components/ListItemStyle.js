@@ -6,6 +6,8 @@ export const ListItemStyle = styled.li`
     position: relative;
     font-size: 24px;
     border-bottom: 1px solid #ededed;
+    list-style: none;
+    left: -25px;
 
     :last-child {
         border-bottom: none;
@@ -17,6 +19,8 @@ export const ListItemStyle = styled.li`
 
     li.editing:last-child {
     margin-bottom: -1px;
+
+    
 }
 
 `

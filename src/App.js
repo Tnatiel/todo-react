@@ -11,31 +11,38 @@ function App() {
   
   const [lists, setLists] = useState([])
   const listInputAdderRef = useRef()
-  const userLoginInputRef = useRef()
-  const passwordLoginInputRef = useRef()
-  const [user, setUser] = useState([{}])
+  // const userLoginInputRef = useRef()
+  // const passwordLoginInputRef = useRef()
+  // const [user, setUser] = useState([{}])
    
   const addList = () => {
-    const appId = Math.random() * 9999999999999
-    const newListApp =  <TodoApp mainTitle={listInputAdderRef.current.value} key={appId} />
-    listInputAdderRef.current.value = ''
-    const newLists = lists.concat(newListApp)
-    setLists(newLists)
-  }
-  
-  const loginUser = () => {
-    const userName = userLoginInputRef.current.value
-    userLoginInputRef.current.value = '' 
-    passwordLoginInputRef.current.value = '' 
-    user[0] = {userName, role: 'admin'}
-    setUser(user[0])
+      const appId = Math.random() * 9999999999999
+      const newListApp =  <TodoApp mainTitle={listInputAdderRef.current.value} key={appId} />
+      listInputAdderRef.current.value = ''
+      const newLists = lists.concat(newListApp)
+      setLists(newLists)
     }
+    
+    const handleEnter = (event) => {
+      if (event.key === 'Enter' && event.target.value.length > 0) {
+        addList()
+      }
+    }
+  
+  
+  // const loginUser = () => {
+  //   const userName = userLoginInputRef.current.value
+  //   userLoginInputRef.current.value = '' 
+  //   passwordLoginInputRef.current.value = '' 
+  //   user[0] = {userName, role: 'admin'}
+  //   setUser(user[0])
+  //   }
 
   return (
     // <>
     //   {user.role === 'admin' ? (
       <>
-        <input defaultValue='' ref={listInputAdderRef} type="text" placeholder='Whats the list name'/>
+        <input onKeyUp={(event) => handleEnter(event)} defaultValue='' ref={listInputAdderRef} type="text" placeholder='Whats the list name'/>
         <button onClick={addList}>ADD LIST</button>
         <AppsList items={lists}/>
       </>
